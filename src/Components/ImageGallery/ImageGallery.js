@@ -19,7 +19,6 @@ export default function ImageGallery({ inputValue }) {
       return;
     }
 
-    setLoader(true);
     setImages([]);
     setPage(1);
 
@@ -31,11 +30,11 @@ export default function ImageGallery({ inputValue }) {
       return;
     }
 
-    setLoader(true);
     fetchImages(images, page);
   }, [page]);
 
   const fetchImages = (prevImages = [], page = 1) => {
+    setLoader(true);
     fetch(
       `${baseUrl}?q=${inputValue}&page=${page}&key=${key}&image_type=photo&orientation=horizontal&per_page=12`,
     )
